@@ -46,14 +46,14 @@ jobs:
     - name: Install npm dependencies
       run: npm install
     - name: Run build task
-      run: npm build --if-present
+      run: npm run build --if-present
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
       env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_RSA_EC2 }}
           ARGS: "-rltgoDzvO --delete"
-          SOURCE: "/"
+          SOURCE: "/build/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: "/home/ubuntu/SampleExpressApp"
+          TARGET: "/var/www/html"
           EXCLUDE: "/dist/, /node_modules/"
