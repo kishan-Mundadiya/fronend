@@ -50,7 +50,7 @@ jobs:
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
       env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_RSA_EC2 }}
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_RSA }}
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "build/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
